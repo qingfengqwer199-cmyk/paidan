@@ -1,55 +1,66 @@
-﻿<!DOCTYPE html>
-<html lang="zh">
+admin-portal
+│
+├ login.html
+├ index.html
+│
+├ pages
+│   ├ page1.html
+│   ├ page2.html
+│   ├ page3.html
+│   ├ page4.html
+│   ├ page5.html
+│   ├ page6.html
+│   ├ page7.html
+│   ├ page8.html
+│   ├ page9.html
+│   ├ page10.html
+│   ├ page11.html
+│   ├ page12.html
+│   ├ page13.html
+│   ├ page14.html
+│   ├ page15.html
+│   ├ page16.html
+│   └ page17.html
+│
+└ css
+    └ style.css
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
-<title>在线派单系统</title>
+<title>系统登录</title>
 
 <style>
 
 body{
-background:#d8d4a8;
-font-family:Arial;
-text-align:center;
-}
-
-.title{
-font-size:32px;
-margin-top:40px;
-}
-
-.container{
-width:900px;
-margin:auto;
+background:#0f172a;
 display:flex;
-gap:40px;
-margin-top:40px;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-family:Arial;
 }
 
-.box{
+.login{
 background:white;
+padding:40px;
 border-radius:10px;
-padding:20px;
-width:400px;
-box-shadow:0 2px 10px rgba(0,0,0,0.2);
+width:300px;
 }
 
-.list{
-text-align:left;
-}
-
-.list div{
+input{
+width:100%;
 padding:10px;
-border-bottom:1px solid #ddd;
+margin-top:10px;
 }
 
-.date{
-float:right;
-color:#999;
-}
-
-.icon{
-font-size:60px;
-margin-bottom:10px;
+button{
+width:100%;
+padding:10px;
+margin-top:20px;
+background:#3b82f6;
+border:none;
+color:white;
 }
 
 </style>
@@ -58,40 +69,203 @@ margin-bottom:10px;
 
 <body>
 
-<div class="title">在线派单系统</div>
+<div class="login">
 
-<div class="container">
+<h2>系统登录</h2>
 
-<div class="box">
+<input id="user" placeholder="用户名">
+<input id="pass" type="password" placeholder="密码">
 
-<div class="icon">₿</div>
-
-<div class="list">
-
-<div>任务单获取 <span class="date">2026-03-12</span></div>
-<div>出款单 <span class="date">2026-03-12</span></div>
-<div>服务器地址问题 <span class="date">2026-03-12</span></div>
-<div>客户信用问题 <span class="date">2026-03-12</span></div>
-<div>新增投资规则 <span class="date">2026-03-12</span></div>
+<button onclick="login()">登录</button>
 
 </div>
 
-</div>
+<script>
 
-<div class="box">
+function login(){
 
-<div class="icon">💳</div>
+var u=document.getElementById("user").value
+var p=document.getElementById("pass").value
 
-<div class="list">
+if(u=="admin" && p=="123456"){
+window.location="index.html"
+}
+else{
+alert("账号或密码错误")
+}
 
-<div>手机支付转账 <span class="date">2026-03-12</span></div>
-<div>手机支付到账 <span class="date">2026-03-12</span></div>
+}
 
-</div>
-
-</div>
-
-</div>
+</script>
 
 </body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>后台系统</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+display:flex;
+}
+
+.sidebar{
+width:220px;
+background:#1e293b;
+color:white;
+height:100vh;
+padding:20px;
+}
+
+.sidebar a{
+display:block;
+color:white;
+padding:10px;
+text-decoration:none;
+}
+
+.sidebar a:hover{
+background:#334155;
+}
+
+.main{
+flex:1;
+}
+
+.header{
+background:#0f172a;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+}
+
+.content{
+padding:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h3>系统菜单</h3>
+
+<a href="pages/page1.html">任务管理</a>
+<a href="pages/page2.html">订单管理</a>
+<a href="pages/page3.html">财务系统</a>
+<a href="pages/page4.html">用户管理</a>
+<a href="pages/page5.html">信用系统</a>
+<a href="pages/page6.html">数据统计</a>
+<a href="pages/page7.html">异常提醒</a>
+<a href="pages/page8.html">日志管理</a>
+<a href="pages/page9.html">服务器状态</a>
+<a href="pages/page10.html">API管理</a>
+<a href="pages/page11.html">报表中心</a>
+<a href="pages/page12.html">支付系统</a>
+<a href="pages/page13.html">提现系统</a>
+<a href="pages/page14.html">系统设置</a>
+<a href="pages/page15.html">公告管理</a>
+<a href="pages/page16.html">权限管理</a>
+<a href="pages/page17.html">关于系统</a>
+
+</div>
+
+<div class="main">
+
+<div class="header">
+
+<div>后台管理系统</div>
+
+<div id="time"></div>
+
+</div>
+
+<div class="content">
+
+<h2>欢迎进入系统后台</h2>
+
+<p>这里可以查看系统数据。</p>
+
+<table border="1" width="100%">
+
+<tr>
+<th>用户</th>
+<th>订单</th>
+<th>金额</th>
+</tr>
+
+<tr>
+<td>用户A</td>
+<td>10231</td>
+<td>5000</td>
+</tr>
+
+<tr>
+<td>用户B</td>
+<td>10232</td>
+<td>8000</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+function updateTime(){
+document.getElementById("time").innerText=new Date().toLocaleString()
+}
+
+setInterval(updateTime,1000)
+
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>功能页面</title>
+
+<style>
+
+body{
+font-family:Arial;
+padding:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>功能页面</h2>
+
+<p>这里可以写功能内容，例如：</p>
+
+<ul>
+<li>任务列表</li>
+<li>数据统计</li>
+<li>用户信息</li>
+</ul>
+
+<a href="../index.html">返回首页</a>
+
+</body>
+
 </html>

@@ -140,7 +140,7 @@ body {
 
 <!-- 顶部 -->
 <div class="header">
-    <div class="header-title">智慧物流云平台 🤖</div>
+         <div class="header-title">欧摩威智慧物流云平台 🤖</div>
 
     <div class="header-right">
         <div id="time"></div>
@@ -206,17 +206,17 @@ body {
 
 <div class="row">
 <div class="label">营业总额</div>
-<div class="value" onclick="edit(this)">$1,892.48</div>
+<div class="value" onclick="edit(this)">$1</div>
 </div>
 
 <div class="row">
 <div class="label">提现金额</div>
-<div class="value" onclick="edit(this)">$5,000.00</div>
+<div class="value" onclick="edit(this)">$1</div>
 </div>
 
 <div class="row">
 <div class="label">审核状态</div>
-<div class="value red" onclick="edit(this)">信用分不足</div>
+<div class="value red" onclick="edit(this)">信誉分不足</div>
 </div>
 
 <!-- 汇率 -->
@@ -224,10 +224,17 @@ body {
 <div class="label">今日汇率</div>
 <div class="value" onclick="edit(this)">6.88</div>
 </div>
+    
 
-<div class="rate">
-<div onclick="edit(this)">$5,000.00 USD</div>
-<div onclick="edit(this)">¥34,400.00 CNY</div>
+<div class="row">
+<div class="label">美元金额</div>
+<div onclick="edit(this)">$1.00 USD</div>
+</div>
+    
+
+<div class="row">
+<div class="label">人民币金额</div>
+<div onclick="edit(this)">¥6.88.00 CNY</div>
 </div>
 
 </div>
@@ -235,13 +242,17 @@ body {
 <!-- 右侧 -->
 <div class="right-box">
 
-<p>信用积分：<span class="red" onclick="edit(this)">90</span></p>
-
+<p>信誉分：<span class="red" onclick="edit(this)">0分</span></p>
+<p>星  级：<span class="red" onclick="edit(this)">1星</span></p>
+    
 <p>
 状态：
 <span class="red" onclick="edit(this)">异常</span>
-&nbsp;&nbsp;下降：
+&nbsp;&nbsp;信誉分下降：
 <span class="red" onclick="edit(this)">10分</span>
+&nbsp;&nbsp;星级下降：
+<span class="red" onclick="edit(this)">1星</span>
+    
 </p>
 
 <p onclick="edit(this)">
@@ -268,6 +279,8 @@ body {
 <!-- 说明 -->
 <div style="background:#3c78b5;color:white;padding:10px;margin-top:10px;" onclick="edit(this)">
 信用分说明：这里内容可以随便修改，完全可编辑。
+
+    
 </div>
 
 </div>

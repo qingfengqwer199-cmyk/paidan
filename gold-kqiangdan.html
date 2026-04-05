@@ -206,17 +206,17 @@ body {
 
 <div class="row">
 <div class="label">营业总额</div>
-<div class="value" onclick="edit(this)">$1,892.48</div>
+<div class="value" onclick="edit(this)">$1</div>
 </div>
 
 <div class="row">
 <div class="label">提现金额</div>
-<div class="value" onclick="edit(this)">$5,000.00</div>
+<div class="value" onclick="edit(this)">$1</div>
 </div>
 
 <div class="row">
 <div class="label">审核状态</div>
-<div class="value red" onclick="edit(this)">信用分不足</div>
+<div class="value red" onclick="edit(this)">保证金未缴纳</div>
 </div>
 
 <!-- 汇率 -->
@@ -225,9 +225,14 @@ body {
 <div class="value" onclick="edit(this)">6.88</div>
 </div>
 
-<div class="rate">
-<div onclick="edit(this)">$5,000.00 USD</div>
-<div onclick="edit(this)">¥34,400.00 CNY</div>
+<div class="row">
+<div class="label">美元金额</div>
+<div onclick="edit(this)">$1.00 USD</div>
+</div>
+
+<div class="row">
+<div class="label">人民币金额</div>
+<div onclick="edit(this)">¥6.88.00 CNY</div>
 </div>
 
 </div>
@@ -235,7 +240,7 @@ body {
 <!-- 右侧 -->
 <div class="right-box">
 
-<p>信用积分：<span class="red" onclick="edit(this)">90</span></p>
+<p>保证金金额：<span class="red" onclick="edit(this)">0</span></p>
 
 <p>
 状态：

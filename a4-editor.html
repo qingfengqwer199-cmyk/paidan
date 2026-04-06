@@ -38,6 +38,16 @@ body {
     left:180px;
     cursor:move;
 }
+
+    /* 标题 */
+.stamp {
+    width:150px;
+    position:absolute;
+    top:180px;
+    left:180px;
+    cursor:move;
+}
+    
 </style>
 </head>
 
@@ -45,7 +55,7 @@ body {
 
 <div class="page" id="page">
 
-    <h2 contenteditable="true" class="editable"><img id="stamp" class="stamp" src="TK-biaoti.png" alt="印章"> </h2>
+    <h2 contenteditable="true" class="editable">点击可编辑内容 </h2>
 
     <p contenteditable="true" class="editable">
         这里是正文内容，点击可以直接编辑文字……
@@ -55,7 +65,14 @@ body {
     <img id="stamp" class="stamp" src="OM-yinzhang.png" alt="印章"> 
 
 </div>
+    
+</p>
 
+    <!-- 标题 -->
+    <img id="stamp" class="stamp" src="TK-biaoti.png" alt="标题"> 
+
+</div>
+    
 <!-- 控制区 -->
 <div style="position:fixed;right:20px;top:20px;background:white;padding:10px;">
     
@@ -95,6 +112,24 @@ document.onmousemove = function(e){
         stamp.style.top = e.pageY - 60 + "px";
     }
 }
+
+    // 拖动标题
+let stamp = document.getElementById("stamp");
+let isDragging = false;
+
+stamp.onmousedown = function(e){
+    isDragging = true;
+}
+
+document.onmouseup = function(){
+    isDragging = false;
+}
+
+document.onmousemove = function(e){
+    if(isDragging){
+        stamp.style.left = e.pageX - 60 + "px";
+        stamp.style.top = e.pageY - 60 + "px";
+    }
 
 // 打印
 function printPage(){

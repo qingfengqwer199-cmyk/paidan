@@ -95,25 +95,6 @@ document.onmousemove = function(e){
         stamp.style.left = e.pageX - 60 + "px";
         stamp.style.top = e.pageY - 60 + "px";
     }
-}
-
-    // 拖动标题
-let stamp = document.getElementById("stamp");
-let isDragging = false;
-
-stamp.onmousedown = function(e){
-    isDragging = true;
-}
-
-document.onmouseup = function(){
-    isDragging = false;
-}
-
-document.onmousemove = function(e){
-    if(isDragging){
-        stamp.style.left = e.pageX - 60 + "px";
-        stamp.style.top = e.pageY - 60 + "px";
-    }
 
 // 打印
 function printPage(){

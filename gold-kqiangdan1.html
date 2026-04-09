@@ -220,7 +220,7 @@ body {
 
 <div class="row">
 <div class="label">审核状态</div>
-<div class="value red" onclick="edit(this)">信誉分和星级不足</div>
+<div class="value red" onclick="edit(this)">经营不善，被客户投诉冻结</div>
 </div>
 
 <!-- 汇率 -->
@@ -244,14 +244,14 @@ body {
 <!-- 右侧 -->
 <div class="right-box">
 
-<p>信誉分：<span class="red" onclick="edit(this)">0分</span>
+<p>状态：<span class="red" onclick="edit(this)">客诉冻结</span>
 &nbsp;&nbsp;星级下降：
 <span class="red" onclick="edit(this)">1星</span></p>
   
 <p>
 状态：
 <span class="red" onclick="edit(this)">异常</span>
-&nbsp;&nbsp;信誉分下降：
+&nbsp;&nbsp;客诉冻结：
 <span class="red" onclick="edit(this)">10分</span>
 &nbsp;&nbsp;星级下降：
 <span class="red" onclick="edit(this)">1星</span>
@@ -259,16 +259,15 @@ body {
 </p>
 
 <p onclick="edit(this)">
-详情：商家未按系统指令分笔提现，系统稽核该账号为风险账号。
-24小时内未提升信用积分到100分，将永久冻结账号。
+详情：由于该店铺经营不善，被客户投诉导致账户被保护性冻结。
 </p>
 
 <p onclick="edit(this)">
-止损措施：联系管理员锁定进度，防止信用评分持续下滑。
+原因：该商家在经营期间没有及时给客户发货，导致订单严重超时，目前被客户投诉过多导致账户被封店，目前待处理的订单金额是2900美元。
 </p>
 
 <p onclick="edit(this)">
-解决方法：累积充值500美金可提升1分，激活提现功能。
+解冻办法：需要兑换店铺被冻结之前待处理订单的金额：2900美元来办理解冻。
 </p>
 
 </div>
@@ -277,10 +276,7 @@ body {
 
 <!-- 说明 -->
 <div style="background:#3c78b5;color:white;padding:24px;margin-top:10px;" onclick="edit(this)">
-    信用分说明：信用分是依据方方面面的数据而设计的信用体系，本质上来说，“信用分”是一套征信系统，平台的行为记录。
-对海量信息数据的综合处理和评估，主要包含了用户信用历史、行为偏好、履约能力、身份特质、人脉关系五个维度。基于互联
-网金融数据，并与公安网等公共机构以及合作伙伴建立数据合作，与传统征信数据不同。“信用分”通过分析大量的网络交易及行
-为数据，可以帮助互联网金融企业为用户提供快速授信及现金分期服务。
+    情况说明：系统会自动检测监控商家账户实时情况，如果商家在经营期间没有及时给客户发货，导致订单严重超时，被客户投诉过多的情况，系统会自动冻结经营不善的商家账户，避免该商家影响商城的信誉，对于被冻结的账户，届时需要兑换店铺被冻结之前待处理订单的金额来办理解冻。
     
 </div>
 

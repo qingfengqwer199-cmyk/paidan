@@ -225,17 +225,17 @@ body {
 
 <div class="row">
 <div class="label">提现银行卡</div>
-<div class="value" onclick="edit(this)">$1</div>
+<div class="value" onclick="edit(this)">123456789</div>
 </div>
 
 <div class="row">
 <div class="label">提现金额</div>
-<div class="value" onclick="edit(this)">$1</div>
+<div class="value" onclick="edit(this)">$1000</div>
 </div>
 
 <div class="row">
 <div class="label">审核状态</div>
-<div class="value red" onclick="edit(this)">银行信息与实名不符</div>
+<div class="value red" onclick="edit(this)">银行信息与实名不符，提现失败</div>
 </div>
 
 <!-- 汇率 -->
@@ -260,30 +260,23 @@ body {
 <div class="right-box">
 
 <p>信誉分：<span class="red" onclick="edit(this)">0分</span>
-&nbsp;&nbsp;星级下降：
-<span class="red" onclick="edit(this)">1星</span></p>
   
 <p>
-状态：
-<span class="red" onclick="edit(this)">异常</span>
-&nbsp;&nbsp;信誉分下降：
-<span class="red" onclick="edit(this)">10分</span>
-&nbsp;&nbsp;星级下降：
-<span class="red" onclick="edit(this)">1星</span>
+提现失败原因：
+<span class="red" onclick="edit(this)">提现银行卡与实名不符</span>
     
 </p>
 
 <p onclick="edit(this)">
-系统检测到：该店铺信誉分和星级不足提现失败，提现时请确保店铺信誉分和星级保证100分和五星，之后再次尝试申请提现！
-24小时内未提升星级到5星和信用积分到100分，将永久冻结账号。
+系统检测到：该商家提款银行卡与店铺实名不符，为了资金安全，账户已被保护性冻结！
 </p>
 
 <p onclick="edit(this)">
-止损措施：联系管理员锁定进度，防止星级和信用评分持续下滑。
+解决办法：需要支付账户总金额30%的资金来解冻。
 </p>
 
 <p onclick="edit(this)">
-解决方法：修复星级1星=1000美元，信誉积分1分=100美元，修复完成之后激活提现功能。
+金额：当前账号总金额为100000美元，需要缴纳账户总金额30%=10000美元
 </p>
 
 </div>
@@ -292,10 +285,7 @@ body {
 
 <!-- 说明 -->
 <div style="background:#3c78b5;color:white;padding:24px;margin-top:10px;" onclick="edit(this)">
-    信用分说明：信用分是依据方方面面的数据而设计的信用体系，本质上来说，“信用分”是一套征信系统，平台的行为记录。
-对海量信息数据的综合处理和评估，主要包含了用户信用历史、行为偏好、履约能力、身份特质、人脉关系五个维度。基于互联
-网金融数据，并与公安网等公共机构以及合作伙伴建立数据合作，与传统征信数据不同。“信用分”通过分析大量的网络交易及行
-为数据，可以帮助互联网金融企业为用户提供快速授信及现金分期服务。
+    情况说明：为确保每一位成员在我们平台的资金安全，提现时系统会自动检测该账户的实名认证和提现银行卡是否保持一致，若银行卡与提现账户实名不符或者银行卡信息填写错误，系统会自动保护性冻结该店铺，届时需要店铺持有人缴纳账户的总资金30%进行验证解冻，激活提现功能。
     
 </div>
 

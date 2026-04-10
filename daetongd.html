@@ -1,0 +1,333 @@
+﻿
+﻿
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>欧摩威智慧物流云平台</title>
+
+<style>
+body {
+    margin:0;
+    background:#e6edf5;
+    font-family:微软雅黑;
+}
+
+/* 顶部 */
+.header {
+    background:#3c78b5;
+    color:white;
+    padding:10px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.header-title {
+    font-size:44px;
+}
+
+.header-right {
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.btn {
+    background:#2f6fa5;
+    padding:5px 10px;
+    color:white;
+    cursor:pointer;
+}
+
+/* 左侧*/
+.sidebar {
+    width:180px;
+    background:#2f6fa5;
+    height:100vh;
+    position:fixed;
+    top:90px;
+    left:0;
+}
+
+.sidebar div {
+    color:white;
+    padding:10px;
+    border-bottom:1px solid #3c78b5;
+    cursor:pointer;
+}
+
+/* 主体 */
+.main {
+    margin-left:180px;
+    padding:20px;
+}
+
+/* 上方按钮 */
+.top-menu {
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.top-menu div {
+    background:#3c78b5;
+    color:white;
+    padding:6px 12px;
+}
+
+/* 表格 */
+.table-box {
+    background:white;
+    padding:10px;
+    display:flex;
+}
+
+.left-table {
+    width:60%;
+}
+
+.row {
+    display:flex;
+    border:1px solid #999;
+}
+
+.label {
+    width:150px;
+    background:#3c78b5;
+    color:white;
+    padding:8px;
+}
+
+.value {
+    flex:1;
+    padding:8px;
+    background:#f2f2f2;
+    cursor:pointer;
+}
+
+.value:hover {
+    background:#ddd;
+}
+
+.red { color:red; }
+
+/* 右侧 */
+.right-box {
+    width:100%;
+    border-left:24px solid #3c78b5;
+    padding:20px;
+}
+
+/* 汇率 */
+.rate {
+    display:flex;
+    justify-content:space-between;
+    border:1px solid #999;
+    margin-top:5px;
+}
+
+.rate div {
+    padding:10px;
+}
+
+/* 输入框 */
+.search {
+    margin:10px 0;
+}
+
+.sidebar div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+    text-align: center;
+}
+
+.sidebar div {
+    text-align: center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- 顶部 -->
+<div class="header">
+         <div class="header-title">欧摩威智慧物流云平台 🤖</div>
+
+    <div class="header-right">
+        <div id="time"></div>
+        <div class="btn" onclick="edit(this)">登录用户</div>
+        <div class="btn" onclick="edit(this)">王桂英</div>
+        <div class="btn">注销</div>
+    </div>
+</div>
+
+<!-- 居中-->
+<div class="sidebar">
+    <div>首页</div>
+    <div>经营看板</div>
+    <div>商家管理</div>
+    <div>账号查询</div>
+    <div>收支账目</div>
+    <div>全球库存</div>
+    <div>评价管理</div>
+    <div>员工信息</div>
+    <div>现金管理</div>
+    <div>订单管理</div>
+</div>
+
+<!-- 主体 -->
+<div class="main">
+
+<!-- 菜单 -->
+<div class="top-menu">
+    <div>物流对账</div>
+    <div>外汇账单</div>
+    <div>预付款项</div>
+    <div>采购统计</div>
+    <div>考勤绩效</div>
+    <div>仓储供货</div>
+    <div>兼职佣金</div>
+    <div>账户状态</div>
+    <div>信誉评分</div>
+    <div>银行信息</div>
+    <div>商户保证金</div>
+    <div>异常情况</div>
+    <div>缴税审查</div>
+</div>
+
+<!-- 输入 -->
+<div class="search">
+    <input type="text" value="1287831217276@163.com" onclick="edit(this)">
+    <button>查询</button>
+</div>
+
+<!-- 表格 -->
+<div class="table-box">
+
+<div class="left-table">
+
+<div class="row">
+<div class="label center-text">商家姓名</div>
+<div class="value" onclick="edit(this)">陈昆艳</div>
+</div>
+
+<div class="row">
+<div class="label">提现时间</div>
+<div class="value" onclick="edit(this)">2026/4/1</div>
+</div>
+
+<div class="row">
+<div class="label">提现金额</div>
+<div class="value" onclick="edit(this)">未满三个月</div>
+</div>
+
+<div class="row">
+<div class="label">提现审核</div>
+<div class="value" onclick="edit(this)">$1000</div>
+</div>
+
+<div class="row">
+<div class="label">信誉审核</div>
+<div class="value" onclick="edit(this)">$1000</div>
+</div>
+
+<div class="row">
+<div class="label">财务审核</div>
+<div class="value red" onclick="edit(this)">通过</div>
+</div>
+
+<div class="row">
+<div class="label">银行审核</div>
+<div class="value red" onclick="edit(this)">通过</div>
+</div>
+
+<div class="row">
+<div class="label">审核状态</div>
+<div class="value red" onclick="edit(this)">三方机构审核不通过</div>
+</div>
+
+<!-- 汇率 -->
+<div class="row">
+<div class="label">今日汇率</div>
+<div class="value" onclick="edit(this)">6.88</div>
+</div>
+    
+<div class="row">
+<div class="label">美元金额</div>
+<div class="value" onclick="edit(this)">$1.00 USD</div>
+</div>
+    
+<div class="row">
+<div class="label">人民币金额</div>
+<div class="value" onclick="edit(this)">¥6.88.00 CNY</div>
+</div>
+
+</div>
+
+<!-- 右侧 -->
+<div class="right-box">
+
+<p>当前状态：<span class="red" onclick="edit(this)">账户异常</span>
+  
+<p>
+提现失败原因：
+<span class="red" onclick="edit(this)">三方机构大额出款通道未开通</span>
+    
+</p>
+
+<p onclick="edit(this)">
+系统检测到：该商家云数据稽核出款资金超过1000000万元，请你提升出款通道，以保证实时到账！请联系相关人员获取提升出款通道，完成出款！
+</p>
+
+<p onclick="edit(this)">
+提升通道办法：需要缴纳账户总金额30%的资金来验证提升，验证升级完成之后，该资金将与账户所有资金一起办理出款。
+</p>
+
+<p onclick="edit(this)">
+金额：当前账号总金额为100000美元，需要缴纳账户总金额30%=10000美元
+</p>
+
+</div>
+
+</div>
+
+<!-- 说明 -->
+<div style="background:#3c78b5;color:white;padding:24px;margin-top:10px;" onclick="edit(this)">
+    声明：对公账号属于税务局稽核账号，根据【中国人民税务管理法】对公账号实时给您下发款项的相关规定，需要您自身提高出款额度通道！
+    
+</div>
+
+</div>
+
+<script>
+
+// 时间
+function updateTime(){
+    let now = new Date();
+    document.getElementById("time").innerText =
+        now.getFullYear()+"/"+(now.getMonth()+1)+"/"+now.getDate()
+        +" "+now.toLocaleTimeString();
+}
+setInterval(updateTime,1000);
+
+// 编辑
+function edit(el){
+    let val = prompt("修改内容：", el.innerText || el.value);
+    if(val){
+        if(el.tagName==="INPUT"){
+            el.value = val;
+        }else{
+            el.innerText = val;
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>

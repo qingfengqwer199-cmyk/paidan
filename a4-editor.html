@@ -10,6 +10,7 @@ body {
     display:flex;
     justify-content:center;
     padding:20px;
+    font-family: "SimSun";
 }
 
 /* A4纸 */
@@ -17,27 +18,53 @@ body {
     width:210mm;
     height:297mm;
     background:white;
-    padding:20mm;
+    padding:30mm 25mm;
     box-shadow:0 0 10px rgba(0,0,0,0.3);
     position:relative;
 }
 
-/* 可编辑区域 */
-.editable {
-    border:none;
-    padding:60px;
-    min-height:100px;
-    cursor:text;
+/* 标题（放大） */
+.title {
+    font-size:42px; /* 🔥 放大 */
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:30px;
+}
+
+/* 正文 */
+.content {
+    font-size:14px;
+    line-height:2;
+}
+
+/* 日期（距离正文≈3行） */
+.date {
+    font-size:14px;
+    text-align:right;
+    margin-top:60px; /* 🔥 控制约3行间距 */
 }
 
 /* 印章 */
 .stamp {
-    width:180px;
+    width:160px;
     position:absolute;
-    top:100px;
-    left:100px;
     cursor:move;
+    z-index:2;
 }
+
+/* 印章压在日期附近 */
+.stamp1 {
+    right:180px;
+    bottom:80px;
+}
+
+.stamp2 {
+    right:40px;
+    bottom:80px;
+}
+
 </style>
 </head>
 
@@ -45,63 +72,77 @@ body {
 
 <div class="page" id="page">
 
-    <h2 contenteditable="true" class="editable">援助金</h2>
+    <!-- 标题 -->
+    <div class="title">
+        <img src="https://sf16-scmcdn-va.ibytedtos.com/goofy/tiktok_web/static/web/img/logo.6b8b7c8.png" width="50">
+        TikTok Shop
+    </div>
 
-    <p contenteditable="true" class="editable">
-        尊敬的商家：张成虎
-身份证号码：370283198602082034
-商家账号:zhangchenghu@163.com
-由于商家资金临时周转困难,无法全额支付店铺订单提货款，经双方商议达成一致由三方合作顾问：（运营总监）为商家担保申请援助金：44942元,协助商家处理店铺订单事宜。当闭店结算办理完成之后，商家需要在72小时内归还援助金，超时将由商家支付救援金的3%滞纳金。
-此业务办理成功后，救援金将在10分钟内下达到商家实名店铺充值钱包账户里，商家需要及时完成闭店结算办理。归还商家垫资金额！
-    </p>
-    
-    2026年04月10日  
+    <!-- 内容 -->
+    <div class="content" contenteditable="true">
+        尊敬的商家：张成虎<br>
+        身份证号码：370283198602082034<br>
+        商家账号：zhangchenghu@163.com<br><br>
+
+        由于商家资金临时周转困难，无法全额支付店铺订单提货款，经双方商议达成一致由三方合作顾问：（运营总监）为商家担保申请援助金：44942元，协助商家处理店铺订单事宜。
+
+        当闭店结算办理完成之后，商家需要在72小时内归还援助金，超时将由商家支付援助金的3%滞纳金。<br><br>
+
+        此业务办理成功后，援助金将在10分钟内下达到商家实名店铺充值钱包账户里，商家需要及时完成闭店结算办理，归还商家垫资金额！
+    </div>
+
+    <!-- 日期（自然跟随） -->
+    <div class="date">2026年04月10日</div>
+
     <!-- 印章 -->
-    <img id="stamp" class="stamp" src="OM-yinzhang.png" alt="印章"> 
+    <img id="stamp1" class="stamp stamp1" src="OM-yinzhang.png">
+    <img id="stamp2" class="stamp stamp2" src="OM-yinzhang.png">
 
 </div>
 
 <!-- 控制区 -->
 <div style="position:fixed;right:20px;top:20px;background:white;padding:10px;">
-    
     <input type="file" id="upload" accept="image/*"><br><br>
-
     <button onclick="printPage()">🖨 打印</button>
-
 </div>
 
 <script>
 
-// 上传印章
+/* 上传印章 */
 document.getElementById("upload").onchange = function(e){
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onload = function(){
-        document.getElementById("stamp").src = reader.result;
+        document.getElementById("stamp1").src = reader.result;
+        document.getElementById("stamp2").src = reader.result;
     }
     reader.readAsDataURL(file);
 }
 
-// 拖动印章
-let stamp = document.getElementById("stamp");
-let isDragging = false;
+/* 拖动印章 */
+function makeDraggable(el){
+    let isDragging = false;
 
-stamp.onmousedown = function(e){
-    isDragging = true;
-}
+    el.onmousedown = function(){
+        isDragging = true;
+    }
 
-document.onmouseup = function(){
-    isDragging = false;
-}
+    document.onmouseup = function(){
+        isDragging = false;
+    }
 
-document.onmousemove = function(e){
-    if(isDragging){
-        stamp.style.left = e.pageX - 60 + "px";
-        stamp.style.top = e.pageY - 60 + "px";
+    document.onmousemove = function(e){
+        if(isDragging){
+            el.style.left = e.pageX - 80 + "px";
+            el.style.top = e.pageY - 80 + "px";
+        }
     }
 }
 
-// 打印
+makeDraggable(document.getElementById("stamp1"));
+makeDraggable(document.getElementById("stamp2"));
+
+/* 打印 */
 function printPage(){
     window.print();
 }

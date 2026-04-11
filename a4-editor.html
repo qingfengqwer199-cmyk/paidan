@@ -37,7 +37,7 @@ body {
     line-height:2;
 }
 
-/* 日期（可拖动+可编辑） */
+/* 日期（可拖动） */
 .date {
     position:absolute;
     left:400px;
@@ -46,14 +46,23 @@ body {
     cursor:move;
 }
 
-/* 印章（自由拖动核心） */
+/* 印章（完全独立） */
 .stamp {
     width:160px;
     position:absolute;
-    left:300px;
-    top:750px;
     cursor:move;
     z-index:10;
+}
+
+/* 初始位置（只是默认，不会再自动改变） */
+#stamp1 {
+    left:300px;
+    top:750px;
+}
+
+#stamp2 {
+    left:500px;
+    top:750px;
 }
 
 </style>
@@ -92,7 +101,7 @@ body {
 
 <script>
 
-/* ===== 通用拖动函数（稳定版）===== */
+/* ===== 通用拖动（完全独立）===== */
 function enableDrag(el){
 
     let isDragging = false;

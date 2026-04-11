@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>图片分支显示</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "黑体", sans-serif;
+    display: flex;
+}
+
+/* 左侧菜单 */
+.sidebar {
+    width: 200px;
+    background: #2c3e50;
+    color: white;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.sidebar button {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 12px;
+    background: #34495e;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sidebar button:hover {
+    background: #1abc9c;
+}
+
+/* 右侧内容 */
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ecf0f1;
+}
+
+/* 图片样式 */
+.content img {
+    max-width: 90%;
+    max-height: 90%;
+    display: none;
+}
+
+/* 当前显示 */
+.active {
+    display: block;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 左侧按钮 -->
+<div class="sidebar">
+    <button onclick="showPage(1)">第1页</button>
+    <button onclick="showPage(2)">第2页</button>
+    <button onclick="showPage(3)">第3页</button>
+    <button onclick="showPage(4)">第4页</button>
+    <button onclick="showPage(5)">第5页</button>
+    <button onclick="showPage(6)">第6页</button>
+    <button onclick="showPage(7)">第7页</button>
+    <button onclick="showPage(8)">第8页</button>
+</div>
+
+<!-- 图片显示区域 -->
+<div class="content">
+    <img id="img1" src="images/1.png">
+    <img id="img2" src="images/2.png">
+    <img id="img3" src="images/3.png">
+    <img id="img4" src="images/4.png">
+    <img id="img5" src="images/5.png">
+    <img id="img6" src="images/6.png">
+    <img id="img7" src="images/7.png">
+    <img id="img8" src="images/8.png">
+</div>
+
+<script>
+function showPage(page) {
+    // 先隐藏所有图片
+    for (let i = 1; i <= 8; i++) {
+        document.getElementById("img" + i).classList.remove("active");
+    }
+
+    // 显示当前
+    document.getElementById("img" + page).classList.add("active");
+}
+
+// 默认显示第一页
+showPage(1);
+</script>
+
+</body>
+</html>

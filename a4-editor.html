@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<title>自动对齐公文版</title>
+<title>公文版（自由拖动）</title>
 
 <style>
 body {
@@ -19,14 +19,13 @@ body {
     height:297mm;
     background:white;
     padding:30mm 25mm;
-    box-shadow:0 0 10px rgba(0,0,0,0.3);
     position:relative;
 }
 
 /* 标题 */
 .title {
     font-size:42px;
-    font-family: "SimHei";
+    font-family:"SimHei";
     font-weight:bold;
     text-align:center;
     margin-bottom:30px;
@@ -38,19 +37,32 @@ body {
     line-height:2;
 }
 
-/* 日期（向左移动10字） */
+/* 日期（可编辑+可拖动） */
 .date {
     position:absolute;
-    right:240px; /* 🔥 原来100 → 左移 */
+    left:10cm;
+    top:20cm;
     font-size:16px;
+    cursor:move;
+    user-select:text;
 }
 
 /* 印章 */
 .stamp {
     width:160px;
     position:absolute;
-    z-index:2;
     cursor:move;
+}
+
+/* 两个章间距10cm */
+.stamp1 {
+    left:10cm;
+    top:22cm;
+}
+
+.stamp2 {
+    left:20cm; /* 🔥 相距10cm */
+    top:22cm;
 }
 
 </style>
@@ -58,11 +70,11 @@ body {
 
 <body>
 
-<div class="page" id="page">
+<div class="page">
 
     <div class="title">TikTok Shop</div>
 
-    <div class="content" id="content" contenteditable="true">
+    <div class="content" contenteditable="true">
         尊敬的商家：张成虎<br>
         身份证号码：370283198602082034<br>
         商家账号：zhangchenghu@163.com<br><br>
@@ -74,70 +86,20 @@ body {
         此业务办理成功后，援助金将在10分钟内下达到商家实名店铺充值钱包账户里，商家需要及时完成闭店结算办理，归还商家垫资金额！
     </div>
 
-    <div class="date" id="date">2026年04月10日</div>
+    <!-- 日期（可编辑） -->
+    <div id="date" class="date" contenteditable="true">
+        2026年04月10日
+    </div>
 
+    <!-- 印章 -->
     <img id="stamp1" class="stamp" src="OM-yinzhang.png">
     <img id="stamp2" class="stamp" src="tik tokyinzhang.png">
 
 </div>
 
-<!-- 控制 -->
-<div style="position:fixed;right:20px;top:20px;background:white;padding:10px;">
-    <input type="file" id="upload" accept="image/*"><br><br>
-    <button onclick="printPage()">🖨 打印</button>
-</div>
-
 <script>
 
-/* ===== 自动对齐 ===== */
-function autoLayout(){
-
-    const content = document.getElementById("content");
-    const date = document.getElementById("date");
-    const page = document.getElementById("page");
-
-    const lineHeight = 32;
-    const gapLines = 3;
-
-    const contentBottom = content.offsetTop + content.offsetHeight;
-
-    let dateTop = contentBottom + lineHeight * gapLines;
-
-    const maxBottom = page.offsetHeight - 120;
-    if(dateTop > maxBottom){
-        dateTop = maxBottom;
-    }
-
-    date.style.top = dateTop + "px";
-
-    // 默认章位置（初始化用）
-    if(!stampMoved){
-        stamp1.style.top = (dateTop - 30) + "px";
-        stamp1.style.right = "200px";
-
-        stamp2.style.top = (dateTop - 30) + "px";
-        stamp2.style.right = "40px";
-    }
-}
-
-autoLayout();
-
-document.getElementById("content").addEventListener("input", autoLayout);
-
-/* ===== 上传印章 ===== */
-document.getElementById("upload").onchange = function(e){
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function(){
-        stamp1.src = reader.result;
-        stamp2.src = reader.result;
-    }
-    reader.readAsDataURL(file);
-}
-
-/* ===== 独立拖动系统（重点优化）===== */
-let stampMoved = false;
-
+/* ===== 通用拖动函数 ===== */
 function enableDrag(el){
 
     let isDragging = false;
@@ -146,8 +108,6 @@ function enableDrag(el){
 
     el.addEventListener("mousedown", function(e){
         isDragging = true;
-        stampMoved = true;
-
         offsetX = e.offsetX;
         offsetY = e.offsetY;
     });
@@ -164,16 +124,10 @@ function enableDrag(el){
     });
 }
 
-const stamp1 = document.getElementById("stamp1");
-const stamp2 = document.getElementById("stamp2");
-
-enableDrag(stamp1);
-enableDrag(stamp2);
-
-/* 打印 */
-function printPage(){
-    window.print();
-}
+/* 应用拖动 */
+enableDrag(document.getElementById("stamp1"));
+enableDrag(document.getElementById("stamp2"));
+enableDrag(document.getElementById("date"));
 
 </script>
 

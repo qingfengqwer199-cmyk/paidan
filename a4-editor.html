@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<title>A4编辑页面</title>
+<title>自动对齐公文版</title>
 
 <style>
 body {
@@ -13,7 +13,7 @@ body {
     font-family: "SimSun";
 }
 
-/* A4纸 */
+/* A4 */
 .page {
     width:210mm;
     height:297mm;
@@ -23,49 +23,36 @@ body {
     position:relative;
 }
 
-/* 标题（放大） */
+/* 标题（居中+黑体） */
 .title {
-    font-size:42px; /* 🔥 放大 */
+    font-size:42px;
+    font-family: "SimHei"; /* 黑体 */
     font-weight:bold;
-    display:flex;
-    align-items:center;
-    gap:10px;
+    text-align:center; /* 居中 */
     margin-bottom:30px;
 }
 
-/* 正文 */
+/* 正文（放大一号） */
 .content {
-    font-size:14px;
+    font-size:16px; /* 🔥 放大 */
     line-height:2;
 }
 
-/* 日期（距离正文≈3行） */
+/* 日期 */
 .date {
-    font-size:14px;
-    text-align:right;
-    margin-top:60px; /* 🔥 控制约3行间距 */
+    position:absolute;
+    right:100px;
+    font-size:16px;
 }
 
 /* 印章 */
 .stamp {
     width:160px;
     position:absolute;
-    cursor:move;
     z-index:2;
 }
 
-/* 印章压在日期附近 */
-.stamp1 {
-    right:180px;
-    bottom:80px;
-}
-
-.stamp2 {
-    right:40px;
-    bottom:80px;
-}
-
-</style>
+/</style>
 </head>
 
 <body>
@@ -74,12 +61,11 @@ body {
 
     <!-- 标题 -->
     <div class="title">
-        <img src="https://sf16-scmcdn-va.ibytedtos.com/goofy/tiktok_web/static/web/img/logo.6b8b7c8.png" width="50">
-        TikTok Shop
+        援助金申请
     </div>
 
-    <!-- 内容 -->
-    <div class="content" contenteditable="true">
+    <!-- 正文 -->
+    <div class="content" id="content" contenteditable="true">
         尊敬的商家：张成虎<br>
         身份证号码：370283198602082034<br>
         商家账号：zhangchenghu@163.com<br><br>
@@ -91,12 +77,12 @@ body {
         此业务办理成功后，援助金将在10分钟内下达到商家实名店铺充值钱包账户里，商家需要及时完成闭店结算办理，归还商家垫资金额！
     </div>
 
-    <!-- 日期（自然跟随） -->
-    <div class="date">2026年04月10日</div>
+    <!-- 日期 -->
+    <div class="date" id="date">2026年04月10日</div>
 
     <!-- 印章 -->
-    <img id="stamp1" class="stamp stamp1" src="OM-yinzhang.png">
-    <img id="stamp2" class="stamp stamp2" src="OM-yinzhang.png">
+    <img id="stamp1" class="stamp" src="OM-yinzhang.png">
+    <img id="stamp2" class="stamp" src="OM-yinzhang.png">
 
 </div>
 
@@ -108,6 +94,41 @@ body {
 
 <script>
 
+/* 自动对齐 */
+function autoLayout(){
+
+    const content = document.getElementById("content");
+    const date = document.getElementById("date");
+    const page = document.getElementById("page");
+
+    const lineHeight = 32; // 根据16px调整
+    const gapLines = 3;
+
+    const contentBottom = content.offsetTop + content.offsetHeight;
+
+    let dateTop = contentBottom + lineHeight * gapLines;
+
+    const maxBottom = page.offsetHeight - 120;
+    if(dateTop > maxBottom){
+        dateTop = maxBottom;
+    }
+
+    date.style.top = dateTop + "px";
+
+    const stamp1 = document.getElementById("stamp1");
+    const stamp2 = document.getElementById("stamp2");
+
+    stamp1.style.top = (dateTop - 30) + "px";
+    stamp1.style.right = "180px";
+
+    stamp2.style.top = (dateTop - 30) + "px";
+    stamp2.style.right = "40px";
+}
+
+autoLayout();
+
+document.getElementById("content").addEventListener("input", autoLayout);
+
 /* 上传印章 */
 document.getElementById("upload").onchange = function(e){
     const file = e.target.files[0];
@@ -118,29 +139,6 @@ document.getElementById("upload").onchange = function(e){
     }
     reader.readAsDataURL(file);
 }
-
-/* 拖动印章 */
-function makeDraggable(el){
-    let isDragging = false;
-
-    el.onmousedown = function(){
-        isDragging = true;
-    }
-
-    document.onmouseup = function(){
-        isDragging = false;
-    }
-
-    document.onmousemove = function(e){
-        if(isDragging){
-            el.style.left = e.pageX - 80 + "px";
-            el.style.top = e.pageY - 80 + "px";
-        }
-    }
-}
-
-makeDraggable(document.getElementById("stamp1"));
-makeDraggable(document.getElementById("stamp2"));
 
 /* 打印 */
 function printPage(){

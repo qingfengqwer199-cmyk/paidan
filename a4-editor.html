@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<title>公文版（自由拖动）</title>
+<title>公文排版系统</title>
 
 <style>
 body {
@@ -37,32 +37,23 @@ body {
     line-height:2;
 }
 
-/* 日期（可编辑+可拖动） */
+/* 日期（可拖动+可编辑） */
 .date {
     position:absolute;
-    left:10cm;
-    top:20cm;
+    left:400px;
+    top:700px;
     font-size:16px;
     cursor:move;
-    user-select:text;
 }
 
-/* 印章 */
+/* 印章（自由拖动核心） */
 .stamp {
     width:160px;
     position:absolute;
+    left:300px;
+    top:750px;
     cursor:move;
-}
-
-/* 两个章间距10cm */
-.stamp1 {
-    left:10cm;
-    top:22cm;
-}
-
-.stamp2 {
-    left:20cm; /* 🔥 相距10cm */
-    top:22cm;
+    z-index:10;
 }
 
 </style>
@@ -72,8 +63,10 @@ body {
 
 <div class="page">
 
-    <div class="title">援助金申请</div>
+    <!-- 标题 -->
+    <div class="title">TikTok Shop</div>
 
+    <!-- 正文 -->
     <div class="content" contenteditable="true">
         尊敬的商家：张成虎<br>
         身份证号码：370283198602082034<br>
@@ -86,7 +79,7 @@ body {
         此业务办理成功后，援助金将在10分钟内下达到商家实名店铺充值钱包账户里，商家需要及时完成闭店结算办理，归还商家垫资金额！
     </div>
 
-    <!-- 日期（可编辑） -->
+    <!-- 日期 -->
     <div id="date" class="date" contenteditable="true">
         2026年04月10日
     </div>
@@ -99,32 +92,41 @@ body {
 
 <script>
 
-/* ===== 通用拖动函数 ===== */
+/* ===== 通用拖动函数（稳定版）===== */
 function enableDrag(el){
 
     let isDragging = false;
-    let offsetX = 0;
-    let offsetY = 0;
+    let startX, startY, startLeft, startTop;
 
     el.addEventListener("mousedown", function(e){
         isDragging = true;
-        offsetX = e.offsetX;
-        offsetY = e.offsetY;
+
+        startX = e.clientX;
+        startY = e.clientY;
+
+        startLeft = el.offsetLeft;
+        startTop = el.offsetTop;
+
+        document.body.style.userSelect = "none";
     });
 
     document.addEventListener("mousemove", function(e){
-        if(isDragging){
-            el.style.left = (e.pageX - offsetX) + "px";
-            el.style.top = (e.pageY - offsetY) + "px";
-        }
+        if(!isDragging) return;
+
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        el.style.left = (startLeft + dx) + "px";
+        el.style.top = (startTop + dy) + "px";
     });
 
     document.addEventListener("mouseup", function(){
         isDragging = false;
+        document.body.style.userSelect = "";
     });
 }
 
-/* 应用拖动 */
+/* 启用拖动 */
 enableDrag(document.getElementById("stamp1"));
 enableDrag(document.getElementById("stamp2"));
 enableDrag(document.getElementById("date"));

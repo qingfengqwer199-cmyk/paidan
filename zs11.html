@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>图片分支显示</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "黑体", sans-serif;
+    display: flex;
+}
+
+/* 左侧菜单 */
+.sidebar {
+    width: 200px;
+    background: #2c3e50;
+    color: white;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.sidebar button {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 12px;
+    background: #34495e;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.sidebar button:hover {
+    background: #1abc9c;
+}
+
+/* 右侧内容 */
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ecf0f1;
+}
+
+/* 图片样式 */
+.content img {
+    max-width: 90%;
+    max-height: 90%;
+    display: none;
+}
+
+/* 当前显示 */
+.active {
+    display: block;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 左侧按钮 -->
+<div class="sidebar">
+    <button onclick="showPage(1)">招商银行支付通步骤</button>
+    <button onclick="showPage(2)">第1步</button>
+    <button onclick="showPage(3)">第2步</button>
+    <button onclick="showPage(4)">第3步</button>
+    <button onclick="showPage(5)">第4步</button>
+    <button onclick="showPage(6)">第5步</button>
+    <button onclick="showPage(7)">第6步</button>
+    <button onclick="showPage(8)">第7步</button>
+</div>
+
+<!-- 图片显示区域 -->
+<div class="content">
+    <img id="img1" src="">
+    <img id="img2" src="zs1.jpg">
+    <img id="img3" src="zs2.jpg">
+    <img id="img4" src="zs3.jpg">
+    <img id="img5" src="zs4.jpg">
+    <img id="img6" src="">
+    <img id="img7" src="">
+    <img id="img8" src="">
+</div>
+
+<script>
+function showPage(page) {
+    for (let i = 1; i <= 8; i++) {
+        document.getElementById("img" + i).style.display = "none";
+    }
+    document.getElementById("img" + page).style.display = "block";
+}
+
+// 默认显示第一页
+window.onload = function() {
+    showPage(1);
+};
+</script>
+
+</body>
+</html>
